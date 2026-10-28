@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>غودوتولوجي | قريباً</title>
 
-    <!-- منع الوضع الليلي التلقائي في المتصفحات -->
     <meta name="color-scheme" content="light only" />
     <meta name="supported-color-schemes" content="light only" />
 
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
-        /* ===== منع الوضع الليلي التلقائي ===== */
         :root {
             color-scheme: light only;
-
             --bg-primary: #FDF0D5;
             --bg-secondary: #ffffff;
             --text-primary: #003049;
@@ -25,8 +22,6 @@
             --accent-red: #C1121F;
         }
 
-        /* ===== خط اسم المنصة المخصص ===== */
-        /* الملف موجود في: fonts/A-Rezvan-fat-Regular.ttf */
         @font-face {
             font-family: 'A Rezvan';
             src: url('fonts/A-Rezvan-fat-Regular.ttf') format('truetype');
@@ -53,6 +48,7 @@
                 linear-gradient(90deg, rgba(120, 0, 0, 0.05) 1px, transparent 1px);
             background-size: 50px 50px;
             background-position: -1px -1px;
+            forced-color-adjust: none;
         }
 
         /* ===== الهيدر ===== */
@@ -67,7 +63,6 @@
             border-radius: 20px;
         }
 
-        /* اسم المنصة بخط A Rezvan + ظل صلب لتحت فقط */
         .landing-header .logo {
             font-family: 'A Rezvan', 'Cairo', sans-serif;
             font-size: 3.2rem;
@@ -84,15 +79,32 @@
                 0 6px 0 var(--shadow-color);
         }
 
-        /* ===== المحتوى ===== */
+        /* ===== هيكل الصفحة ===== */
         .main-wrap {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        .hero-wrap {
+            width: 100%;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
         }
 
+        .game-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0 80px 0;
+        }
+
+        /* ===== البطاقة الأساسية ===== */
         .status-card {
             background: var(--bg-secondary);
             border: 4px solid var(--border-color);
@@ -147,6 +159,84 @@
             margin-top: 10px;
         }
 
+        /* ===== بطاقة اللعبة: بدون خلفية وبدون حدود أو ظل ===== */
+        .game-card {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .game-card h1 {
+            font-size: 1.9rem;
+        }
+
+        .game-card > p {
+            margin-bottom: 18px;
+        }
+
+        .flappy-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .flappy-wrap canvas {
+            display: block;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            width: 100%;
+            height: auto;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+
+        .game-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            max-width: 220px;
+            margin: 0 auto 14px auto;
+        }
+
+        .stat {
+            background: var(--bg-primary);
+            border: 3px solid var(--border-color);
+            box-shadow: 3px 3px 0px 0px var(--shadow-color);
+            padding: 8px 12px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .game-result {
+            margin-top: 8px;
+            font-weight: 800;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            min-height: 1.4em;
+        }
+
         /* ===== الفوتر ===== */
         .landing-footer {
             background-color: var(--nav-bg);
@@ -176,6 +266,12 @@
                     0 3px 0 var(--shadow-color),
                     0 4px 0 var(--shadow-color);
             }
+            .hero-wrap {
+                padding: 30px 16px;
+            }
+            .game-wrap {
+                padding: 20px 0 60px 0;
+            }
             .status-card {
                 padding: 34px 22px;
             }
@@ -188,6 +284,12 @@
             .soon-note {
                 font-size: 1.05rem;
             }
+            .game-card h1 {
+                font-size: 1.5rem;
+            }
+            .game-card {
+                padding: 0 12px;
+            }
         }
     </style>
 </head>
@@ -199,13 +301,39 @@
     </header>
 
     <main class="main-wrap">
-        <div class="status-card">
-            <div class="status-badge">🚧 قيد التطوير</div>
-            <h1>المنصة لا تزال قيد التطوير</h1>
-            <div class="divider"></div>
-            <p>نعمل حاليًا على تجهيز منصة غودوتولوجي بأفضل صورة ممكنة.</p>
-            <p class="soon-note">سيتم تحديث الرابط قريبًا جدًا إن شاء الله</p>
-        </div>
+
+        <section class="hero-wrap">
+            <div class="status-card">
+                <div class="status-badge">🚧 قيد التطوير</div>
+                <h1>المنصة لا تزال قيد التطوير</h1>
+                <div class="divider"></div>
+                <p>نعمل حاليًا على تجهيز منصة غودوتولوجي بأفضل صورة ممكنة.</p>
+                <p class="soon-note">سيتم تحديث الرابط قريبًا جدًا إن شاء الله</p>
+            </div>
+        </section>
+
+        <section class="game-wrap">
+            <div class="status-card game-card">
+                <div class="status-badge">🎮 تحدي سريع</div>
+                <h1>فلابي بيرد</h1>
+                <div class="divider"></div>
+                <p>المس الشاشة أو اضغط Space لتطير وتتجنب الأنابيب</p>
+
+                <div class="flappy-wrap">
+                    <canvas id="flappyCanvas"></canvas>
+                </div>
+
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">أفضل نتيجة</span>
+                        <span class="stat-value" id="flappyBest">0</span>
+                    </div>
+                </div>
+
+                <p class="game-result" id="flappyResult"></p>
+            </div>
+        </section>
+
     </main>
 
     <footer class="landing-footer">
@@ -215,6 +343,319 @@
     <!-- كود تتبع GoatCounter -->
     <script data-goatcounter="https://godotology.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
+
+    <!-- ===== سكربت فلابي بيرد ===== -->
+    <script>
+        (function () {
+            const canvas = document.getElementById('flappyCanvas');
+            const ctx = canvas.getContext('2d');
+            const resultEl = document.getElementById('flappyResult');
+            const bestEl = document.getElementById('flappyBest');
+
+            // ارتفاع ثابت منطقيًا، العرض يملأ الشاشة
+            const BASE_H = 520;
+            const CEIL_H = 60;
+            const GROUND_H = 60;
+
+            let W = 800;
+            let H = BASE_H;
+            let dpr = 1;
+            let speedScale = 1;
+
+            const COLORS = {
+                pipe: '#C1121F',
+                pipeBorder: '#003049',
+                pipeHighlight: 'rgba(255,255,255,0.25)',
+                ground: '#003049',
+                groundTop: '#780000',
+                bird: '#FFC300',
+                birdBorder: '#003049',
+                overlay: 'rgba(0, 48, 73, 0.88)',
+                overlayText: '#FDF0D5',
+                score: '#003049'
+            };
+
+            // فيزياء (لكل إطار عند 60fps)
+            const GRAVITY = 0.5;
+            const JUMP = -8.5;
+            const MAX_FALL = 11;
+            const PIPE_SPEED_BASE = 2.8;
+            const PIPE_W = 62;
+            const GAP = 165;
+            const PIPE_INTERVAL = 1.4;
+
+            const bird = { x: 100, y: BASE_H / 2, vy: 0, r: 15, rot: 0 };
+            let pipes = [];
+            let score = 0;
+            let best = parseInt(localStorage.getItem('godotology_flappy_best') || '0', 10) || 0;
+            let state = 'idle';
+            let pipeTimer = 0;
+            let lastTime = 0;
+
+            bestEl.textContent = best;
+
+            function resize() {
+                const wrap = canvas.parentElement;
+                W = Math.max(320, wrap.clientWidth);
+                H = BASE_H;
+
+                dpr = window.devicePixelRatio || 1;
+                canvas.width = Math.round(W * dpr);
+                canvas.height = Math.round(H * dpr);
+                canvas.style.width = W + 'px';
+                canvas.style.height = H + 'px';
+
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.scale(dpr, dpr);
+
+                speedScale = Math.min(3, Math.max(1, W / 800));
+
+                bird.x = Math.max(70, Math.min(W * 0.12, 180));
+                if (bird.y < CEIL_H + bird.r || bird.y > H - GROUND_H - bird.r) {
+                    bird.y = H / 2;
+                    bird.vy = 0;
+                }
+            }
+
+            function reset() {
+                bird.y = H / 2;
+                bird.vy = 0;
+                bird.rot = 0;
+                pipes = [];
+                score = 0;
+                pipeTimer = 0;
+            }
+
+            function spawnPipe() {
+                const playTop = CEIL_H;
+                const playBottom = H - GROUND_H;
+                const minTop = playTop + 50;
+                const maxTop = playBottom - GAP - 50;
+                const topH = minTop + Math.random() * Math.max(0, maxTop - minTop);
+                pipes.push({ x: W + PIPE_W, topH: topH, passed: false });
+            }
+
+            function jump() {
+                if (state === 'idle') {
+                    state = 'playing';
+                    bird.vy = JUMP;
+                } else if (state === 'playing') {
+                    bird.vy = JUMP;
+                } else if (state === 'gameover') {
+                    reset();
+                    state = 'playing';
+                    bird.vy = JUMP;
+                    resultEl.textContent = '';
+                }
+            }
+
+            function gameOver() {
+                state = 'gameover';
+                if (score > best) {
+                    best = score;
+                    localStorage.setItem('godotology_flappy_best', String(best));
+                    bestEl.textContent = best;
+                    resultEl.textContent = '🎉 رقم قياسي جديد! نقاطك: ' + score;
+                } else {
+                    resultEl.textContent = 'انتهت الجولة! نقاطك: ' + score;
+                }
+            }
+
+            function circleRect(cx, cy, r, rx, ry, rw, rh) {
+                const nx = Math.max(rx, Math.min(cx, rx + rw));
+                const ny = Math.max(ry, Math.min(cy, ry + rh));
+                const dx = cx - nx, dy = cy - ny;
+                return dx * dx + dy * dy < r * r;
+            }
+
+            function update(dt) {
+                if (state !== 'playing') return;
+                const f = dt * 60;
+                const speed = PIPE_SPEED_BASE * speedScale;
+
+                bird.vy += GRAVITY * f;
+                if (bird.vy > MAX_FALL) bird.vy = MAX_FALL;
+                bird.y += bird.vy * f;
+
+                const targetRot = Math.max(-0.6, Math.min(1.4, bird.vy * 0.08));
+                bird.rot += (targetRot - bird.rot) * 0.15 * f;
+
+                pipeTimer += dt;
+                if (pipeTimer >= PIPE_INTERVAL) {
+                    spawnPipe();
+                    pipeTimer = 0;
+                }
+                for (let p of pipes) p.x -= speed * f;
+                pipes = pipes.filter(p => p.x + PIPE_W > -10);
+
+                for (let p of pipes) {
+                    if (!p.passed && p.x + PIPE_W < bird.x - bird.r) {
+                        p.passed = true;
+                        score++;
+                    }
+                }
+
+                // اصطدام بالسقف
+                if (bird.y - bird.r <= CEIL_H) {
+                    bird.y = CEIL_H + bird.r;
+                    bird.vy = 0;
+                }
+
+                // اصطدام بالأرضية
+                if (bird.y + bird.r >= H - GROUND_H) {
+                    bird.y = H - GROUND_H - bird.r;
+                    gameOver();
+                    return;
+                }
+
+                for (let p of pipes) {
+                    if (circleRect(bird.x, bird.y, bird.r - 2, p.x, CEIL_H, PIPE_W, p.topH - CEIL_H)) {
+                        gameOver(); return;
+                    }
+                    const bY = p.topH + GAP;
+                    if (circleRect(bird.x, bird.y, bird.r - 2, p.x, bY, PIPE_W, H - GROUND_H - bY)) {
+                        gameOver(); return;
+                    }
+                }
+            }
+
+            function drawPipe(x, y, w, h) {
+                if (h <= 0) return;
+                ctx.fillStyle = COLORS.pipe;
+                ctx.fillRect(x, y, w, h);
+                ctx.fillStyle = COLORS.pipeHighlight;
+                ctx.fillRect(x + 8, y, 10, h);
+                ctx.strokeStyle = COLORS.pipeBorder;
+                ctx.lineWidth = 4;
+                ctx.strokeRect(x + 2, y + 2, w - 4, h - 4);
+            }
+
+            function drawCeiling() {
+                ctx.fillStyle = COLORS.ground;
+                ctx.fillRect(0, 0, W, CEIL_H);
+                ctx.fillStyle = COLORS.groundTop;
+                ctx.fillRect(0, CEIL_H - 4, W, 4);
+            }
+
+            function drawGround() {
+                ctx.fillStyle = COLORS.ground;
+                ctx.fillRect(0, H - GROUND_H, W, GROUND_H);
+                ctx.fillStyle = COLORS.groundTop;
+                ctx.fillRect(0, H - GROUND_H, W, 4);
+            }
+
+            function drawBird() {
+                ctx.save();
+                ctx.translate(bird.x, bird.y);
+                ctx.rotate(bird.rot);
+
+                ctx.fillStyle = COLORS.bird;
+                ctx.strokeStyle = COLORS.birdBorder;
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(0, 0, bird.r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(5, -5, 5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = COLORS.birdBorder;
+                ctx.beginPath();
+                ctx.arc(7, -5, 2.2, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#FF8C00';
+                ctx.strokeStyle = COLORS.birdBorder;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(12, 1);
+                ctx.lineTo(22, 4);
+                ctx.lineTo(12, 8);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = '#FFA500';
+                ctx.beginPath();
+                ctx.ellipse(-3, 2, 7, 5, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.restore();
+            }
+
+            function draw() {
+                // خلفية شفافة تُظهر نمط الصفحة (بدون شبكة داخلية)
+                ctx.clearRect(0, 0, W, H);
+
+                for (let p of pipes) {
+                    drawPipe(p.x, CEIL_H, PIPE_W, p.topH - CEIL_H);
+                    const bY = p.topH + GAP;
+                    drawPipe(p.x, bY, PIPE_W, H - GROUND_H - bY);
+                }
+
+                drawCeiling();
+                drawGround();
+
+                drawBird();
+
+                // النقاط
+                ctx.fillStyle = COLORS.score;
+                ctx.font = 'bold 40px Cairo, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+                ctx.fillText(String(score), W / 2, CEIL_H + 12);
+
+                if (state === 'idle') {
+                    const boxW = Math.min(300, W - 40);
+                    const boxH = 100;
+                    const bx = (W - boxW) / 2;
+                    const by = (H - boxH) / 2;
+                    ctx.fillStyle = COLORS.overlay;
+                    ctx.fillRect(bx, by, boxW, boxH);
+                    ctx.fillStyle = COLORS.overlayText;
+                    ctx.font = 'bold 22px Cairo, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('اضغط للبدء', W / 2, by + 35);
+                    ctx.font = 'bold 14px Cairo, sans-serif';
+                    ctx.fillText('المس أو انقر أو Space', W / 2, by + 68);
+                }
+            }
+
+            function loop(now) {
+                if (!lastTime) lastTime = now;
+                const dt = Math.min((now - lastTime) / 1000, 0.05);
+                lastTime = now;
+                update(dt);
+                draw();
+                requestAnimationFrame(loop);
+            }
+
+            function onPress(e) {
+                if (e && e.cancelable) e.preventDefault();
+                jump();
+            }
+            canvas.addEventListener('click', onPress);
+            canvas.addEventListener('touchstart', onPress, { passive: false });
+            document.addEventListener('keydown', function (e) {
+                if (e.code === 'Space' || e.key === ' ') {
+                    e.preventDefault();
+                    jump();
+                }
+            });
+
+            window.addEventListener('resize', resize);
+
+            resize();
+            draw();
+            requestAnimationFrame(loop);
+        })();
+    </script>
 
 </body>
 </html>
