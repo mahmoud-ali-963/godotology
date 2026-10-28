@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>غودوتولوجي | قريباً</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== خط اسم المنصة المخصص ===== */
+        /* الملف موجود في: font/A-Rezvan-fat-Regular.ttf */
+        @font-face {
+            font-family: 'A Rezvan';
+            src: url('fonts/A-Rezvan-fat-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-primary: #FDF0D5;
+            --bg-secondary: #ffffff;
+            --text-primary: #003049;
+            --text-secondary: #780000;
+            --border-color: #003049;
+            --shadow-color: #780000;
+            --nav-bg: #003049;
+            --accent-red: #C1121F;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image:
+                linear-gradient(rgba(120, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(120, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: -1px -1px;
+        }
+
+        /* ===== الهيدر ===== */
+        .landing-header {
+            background-color: var(--nav-bg);
+            border: 4px solid var(--border-color);
+            box-shadow: 6px 6px 0px 0px var(--shadow-color);
+            padding: 18px 28px;
+            margin: 16px auto;
+            max-width: 1400px;
+            width: calc(100% - 40px);
+            border-radius: 20px;
+        }
+
+        /* اسم المنصة بخط A Rezvan + ظل صلب لتحت فقط */
+        .landing-header .logo {
+            font-family: 'A Rezvan', 'Cairo', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;            /* الوزن الطبيعي للملف = Regular */
+            font-synthesis: none;        /* منع التسمين الصناعي */
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            /* إزاحة رأسية فقط (0 أفقياً) بدون blur = سماكة 3D لتحت */
+            text-shadow:
+                0 1px 0 var(--shadow-color),
+                0 2px 0 var(--shadow-color),
+                0 3px 0 var(--shadow-color),
+                0 4px 0 var(--shadow-color),
+                0 5px 0 var(--shadow-color),
+                0 6px 0 var(--shadow-color);
+        }
+
+        /* ===== المحتوى ===== */
+        .main-wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .status-card {
+            background: var(--bg-secondary);
+            border: 4px solid var(--border-color);
+            box-shadow: 8px 8px 0px 0px var(--shadow-color);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 620px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-red);
+            border: 3px solid var(--border-color);
+            box-shadow: 3px 3px 0px 0px var(--shadow-color);
+            padding: 6px 16px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 22px;
+        }
+
+        .status-card h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .status-card p {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .status-card .divider {
+            width: 80px;
+            height: 4px;
+            background: var(--accent-red);
+            margin: 20px auto;
+        }
+
+        .soon-note {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-top: 10px;
+        }
+
+        /* ===== الفوتر ===== */
+        .landing-footer {
+            background-color: var(--nav-bg);
+            border-top: 4px solid var(--border-color);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .landing-footer p {
+            color: var(--bg-primary);
+            font-weight: 600;
+        }
+
+        /* ===== التجاوب ===== */
+        @media (max-width: 600px) {
+            .landing-header {
+                padding: 12px 18px;
+                margin: 10px auto;
+                width: calc(100% - 20px);
+                border-radius: 16px;
+            }
+            .landing-header .logo {
+                font-size: 2.4rem;
+                text-shadow:
+                    0 1px 0 var(--shadow-color),
+                    0 2px 0 var(--shadow-color),
+                    0 3px 0 var(--shadow-color),
+                    0 4px 0 var(--shadow-color);
+            }
+            .status-card {
+                padding: 34px 22px;
+            }
+            .status-card h1 {
+                font-size: 1.6rem;
+            }
+            .status-card p {
+                font-size: 1rem;
+            }
+            .soon-note {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="landing-header">
+        <h1 class="logo">غودوتولوجي</h1>
+    </header>
+
+    <main class="main-wrap">
+        <div class="status-card">
+            <div class="status-badge">🚧 قيد التطوير</div>
+            <h1>المنصة لا تزال قيد التطوير</h1>
+            <div class="divider"></div>
+            <p>نعمل حاليًا على تجهيز منصة غودوتولوجي بأفضل صورة ممكنة.</p>
+            <p class="soon-note">سيتم تحديث الرابط قريبًا جدًا إن شاء الله</p>
+        </div>
+    </main>
+
+    <footer class="landing-footer">
+        <p>© 2026 Godotology – جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- كود تتبع GoatCounter -->
+        <script data-goatcounter="https://godotology.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
