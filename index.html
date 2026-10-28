@@ -4,19 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>غودوتولوجي | قريباً</title>
+
+    <!-- منع الوضع الليلي التلقائي في المتصفحات -->
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light only" />
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
-        /* ===== خط اسم المنصة المخصص ===== */
-        /* الملف موجود في: font/A-Rezvan-fat-Regular.ttf */
-        @font-face {
-            font-family: 'A Rezvan';
-            src: url('fonts/A-Rezvan-fat-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
+        /* ===== منع الوضع الليلي التلقائي ===== */
         :root {
+            color-scheme: light only;
+
             --bg-primary: #FDF0D5;
             --bg-secondary: #ffffff;
             --text-primary: #003049;
@@ -25,6 +23,16 @@
             --shadow-color: #780000;
             --nav-bg: #003049;
             --accent-red: #C1121F;
+        }
+
+        /* ===== خط اسم المنصة المخصص ===== */
+        /* الملف موجود في: fonts/A-Rezvan-fat-Regular.ttf */
+        @font-face {
+            font-family: 'A Rezvan';
+            src: url('fonts/A-Rezvan-fat-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
         }
 
         * {
@@ -63,11 +71,10 @@
         .landing-header .logo {
             font-family: 'A Rezvan', 'Cairo', sans-serif;
             font-size: 3.2rem;
-            font-weight: 400;            /* الوزن الطبيعي للملف = Regular */
-            font-synthesis: none;        /* منع التسمين الصناعي */
+            font-weight: 400;
+            font-synthesis: none;
             color: #ffffff;
             letter-spacing: -0.5px;
-            /* إزاحة رأسية فقط (0 أفقياً) بدون blur = سماكة 3D لتحت */
             text-shadow:
                 0 1px 0 var(--shadow-color),
                 0 2px 0 var(--shadow-color),
@@ -206,8 +213,8 @@
     </footer>
 
     <!-- كود تتبع GoatCounter -->
-        <script data-goatcounter="https://godotology.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://godotology.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
